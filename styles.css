@@ -1,0 +1,183 @@
+/* style.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-gradient-1: #ff9a9e;
+  --bg-gradient-2: #fecfef;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --accent: #ff5e9f;
+  --accent-dark: #c13f76;
+  --text-main: #2b2b2b;
+  --text-muted: #666;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+  position: relative;
+  overflow: hidden;
+}
+
+/* fun blurred background blobs */
+.background::before,
+.background::after {
+  content: "";
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.background::before {
+  background: #ffdde1;
+  top: -80px;
+  left: -80px;
+}
+
+.background::after {
+  background: #c1e0ff;
+  bottom: -120px;
+  right: -60px;
+}
+
+/* main card */
+.card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px 28px 28px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  animation: floatIn 0.7s ease-out;
+}
+
+h1 {
+  font-size: 1.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* countdown layout */
+.countdown {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.time-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 16px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.number {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 4px;
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+/* message when countdown finishes */
+.message {
+  margin-top: 6px;
+  font-size: 1rem;
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.hidden {
+  display: none;
+}
+
+/* small bounce for numbers */
+@keyframes tick {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tick {
+  animation: tick 0.18s ease-out;
+}
+
+/* card entrance animation */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* mobile tweaks */
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 18px 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .countdown {
+    gap: 6px;
+  }
+
+  .number {
+    font-size: 1.4rem;
+  }
+
+  .label {
+    font-size: 0.7rem;
+  }
+}
