@@ -23,6 +23,7 @@ function getBostonTargetDate() {
 
 const targetDate = getBostonTargetDate();
 
+
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
@@ -30,17 +31,20 @@ const secondsEl = document.getElementById("seconds");
 const messageEl = document.getElementById("message");
 const countdownEl = document.getElementById("countdown");
 
+
+function pad(num) {
+  return num.toString().padStart(2, '0');
+}
+
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate.getTime() - now;
 
   if (distance <= 0) {
-    // Countdown finished
-    daysEl.textContent = "0";
-    hoursEl.textContent = "0";
-    minutesEl.textContent = "0";
-    secondsEl.textContent = "0";
-
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
     countdownEl.classList.add("hidden");
     messageEl.classList.remove("hidden");
     clearInterval(timerId);
@@ -53,24 +57,12 @@ function updateCountdown() {
   const minutes = Math.floor((secondsTotal % (60 * 60)) / 60);
   const seconds = secondsTotal % 60;
 
-  setNumber(daysEl, days);
-  setNumber(hoursEl, hours);
-  setNumber(minutesEl, minutes);
-  setNumber(secondsEl, seconds);
+  daysEl.textContent = pad(days);
+  hoursEl.textContent = pad(hours);
+  minutesEl.textContent = pad(minutes);
+  secondsEl.textContent = pad(seconds);
 }
 
-// Simple animation when numbers change
-function setNumber(element, newValue) {
-  const oldValue = element.textContent;
-  const formatted = String(newValue);
-
-  if (oldValue !== formatted) {
-    element.textContent = formatted;
-    element.classList.remove("tick");
-    void element.offsetWidth; // force reflow to restart animation
-    element.classList.add("tick");
-  }
-}
 
 const timerId = setInterval(updateCountdown, 1000);
 updateCountdown();
