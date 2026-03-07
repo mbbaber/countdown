@@ -5,38 +5,35 @@
   <meta charset="UTF-8" />
   <title>Girls Trip Countdown</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="background"></div>
 
-  <main class="card">
-    <h1>Girls Trip Countdown</h1>
-    <p class="subtitle">Boston · July 12, 2026</p>
-
-    <div id="countdown" class="countdown">
-      <div class="time-box">
-        <span id="days" class="number">0</span>
-        <span class="label">days</span>
+  <div class="centered-content">
+    <h1 class="fancy-title centered">BOSTON COUNTDOWN</h1>
+    <div id="countdown" class="countdown clock-fancy">
+      <div class="time-segment">
+        <span id="days" class="number">00</span>
+        <span class="label">Days</span>
       </div>
-      <div class="time-box">
-        <span id="hours" class="number">0</span>
-        <span class="label">hours</span>
+      <div class="colon">:</div>
+      <div class="time-segment">
+        <span id="hours" class="number">00</span>
+        <span class="label">Hours</span>
       </div>
-      <div class="time-box">
-        <span id="minutes" class="number">0</span>
-        <span class="label">minutes</span>
+      <div class="colon">:</div>
+      <div class="time-segment">
+        <span id="minutes" class="number">00</span>
+        <span class="label">Minutes</span>
       </div>
-      <div class="time-box">
-        <span id="seconds" class="number">0</span>
-        <span class="label">seconds</span>
+      <div class="colon">:</div>
+      <div class="time-segment">
+        <span id="seconds" class="number">00</span>
+        <span class="label">Seconds</span>
       </div>
     </div>
-
-    <p id="message" class="message hidden">
-      It’s trip time! ✈🍹
-    </p>
-  </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
